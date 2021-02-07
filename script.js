@@ -1,22 +1,24 @@
 //Search button click display meal
-function DisplayMealData() {
+const displayMealData = () => {
   const mealName = document.getElementById("meal-name").value;
   if (mealName === "") {
     alert("Please write your favorite dish name"); //error massage for empty input value
   } else getMealData(mealName);
-}
+};
 //render all Meals from Api
-const getMealData = (inputMeal) => {
-  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal}`)
-    .then((res) => res.json())
-    .then((data) => displayMealItems(data.meals))
-    .catch((error) => alert("Sorry, this meal not found, try something else"));
+const getMealData = async (inputMeal) => {
+  const res = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal}`
+  );
+  const data = await res.json();
+  displayMealItems(data.meals).catch((error) =>
+    alert("Sorry, this meal not found, try something else")
+  );
 };
 //Display all render Meals to browser
 const displayMealItems = (meals) => {
   const mealDisplayArea = document.getElementById("meal-area");
-  const itemDetails = document.getElementById("meal-area");
-  itemDetails.innerHTML = ""; //refresh meals every search
+  mealDisplayArea.innerHTML = ""; //empty meals area every search
   meals.map((meal) => {
     console.log(meal);
     const mealDiv = document.createElement("div");
@@ -25,22 +27,23 @@ const displayMealItems = (meals) => {
     <img src ="${meal.strMealThumb}">
     <h3>${meal.strMeal}</h3>`;
     mealDiv.innerHTML = mealInfo;
-    mealDiv.addEventListener("click", () => recipeDetails(meal.idMeal)); //function to display selected meal ingredients as modal
+    //Eventhandler to display selected meal ingredients as modal
+    mealDiv.addEventListener("click", () => recipeDetails(meal.idMeal));
     mealDisplayArea.appendChild(mealDiv);
   });
 };
 // render only clicked recipe from api using id
-const recipeDetails = (idMeal) => {
-  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
-    .then((res) => res.json())
-    .then((data) => displayIngredient(data.meals));
+const recipeDetails = async (idMeal) => {
+  const res = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+  );
+  const data = await res.json();
+  displayIngredient(data.meals);
 };
 //Display Ingredient In Modal
 const displayIngredient = (recipes) => {
   const recipeDetails = document.getElementById("recipe-ingredient");
-
-  const itemDetails = document.getElementById("recipe-ingredient");
-  itemDetails.innerHTML = ""; //Empty Ingredient every time
+  recipeDetails.innerHTML = ""; //Empty Ingredient area every time
   recipes.map((recipe) => {
     const recipeDiv = document.createElement("div");
     recipeDiv.className = "recipe-item";
