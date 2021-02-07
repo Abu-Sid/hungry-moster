@@ -2,7 +2,7 @@
 function DisplayMealData() {
   const mealName = document.getElementById("input-meal").value;
   if (mealName === "") {
-    alert("Please search your favorite dish"); //error massage for empty input value
+    alert("Please write your favorite dish name"); //error massage for empty input value
   } else getMealData(mealName);
 }
 //render all Meals from Api
