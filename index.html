@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hungry Master</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-5" href="#home"
+            ><img src="./image/hyngry-master-logo.png" alt=""
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto pe-5">
+              <a class="nav-link active" aria-current="page" href="#home"
+                >Home</a
+              >
+              <a class="nav-link" href="#">Catagories</a>
+              <a class="nav-link" href="#">Recipes</a>
+              <a class="nav-link" href="#">Blog</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="container">
+      <form class="d-flex justify-content-center mt-5">
+        <input
+          id="input-meal"
+          class="form-control me-2 w-50"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button onclick="showMealData()" class="btn btn-primary" type="button">
+          Search
+        </button>
+      </form>
+    </section>
+    <section id="error" class="container mt-5">
+      <div id="meal-area"></div>
+      <div id="recipe-ingredient"></div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
