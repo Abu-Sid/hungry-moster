@@ -1,24 +1,18 @@
-function showMealData() {
+//Search button click display meal
+function DisplayMealData() {
   const mealName = document.getElementById("input-meal").value;
   if (mealName === "") {
-    alert("Please search your favorite dish");
-
-    // const errorSection = document.getElementById("error");
-    // const errorDiv = document.createElement("div");
-    // errorDiv.className = "error-mgs";
-    // errorDiv.innerHTML = `
-    // <h1>Please enter valid input</h1>`;
-    // return errorSection.appendChild(errorDiv);
+    alert("Please search your favorite dish"); //error massage for empty input value
   } else getMealData(mealName);
 }
-
+//render all Meals from Api
 const getMealData = (inputMeal) => {
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal}`)
     .then((res) => res.json())
     .then((data) => displayMealItems(data.meals))
     .catch((error) => alert("Please check your URL"));
 };
-
+//Display all render Meals to browser
 const displayMealItems = (meals) => {
   const mealDisplayArea = document.getElementById("meal-area");
   meals.map((meal) => {
@@ -29,18 +23,22 @@ const displayMealItems = (meals) => {
     <img src ="${meal.strMealThumb}">
     <h3>${meal.strMeal}</h3>`;
     mealDiv.innerHTML = mealInfo;
-    mealDiv.addEventListener("click", () => recipeDetails(meal.idMeal));
+    mealDiv.addEventListener("click", () => recipeDetails(meal.idMeal)); // display clicked meal ingredients
     mealDisplayArea.appendChild(mealDiv);
   });
 };
+// render only clicked recipe from api
 const recipeDetails = (id) => {
   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
     .then((res) => res.json())
     .then((data) => displayIngredient(data.meals));
 };
+//Display Ingredient In Modal
 const displayIngredient = (recipes) => {
   const recipeDetails = document.getElementById("recipe-ingredient");
-  dataClear("recipe-ingredient");
+
+  const itemDetails = document.getElementById("recipe-ingredient");
+  itemDetails.innerHTML = ""; //Empty Ingredient every time
   recipes.map((recipe) => {
     const recipeDiv = document.createElement("div");
     recipeDiv.className = "recipe-item";
@@ -65,8 +63,4 @@ const displayIngredient = (recipes) => {
     recipeName.appendChild(Ingredient);
     Ingredient.appendChild(ulTag);
   });
-};
-const dataClear = (id) => {
-  const itemDetails = document.getElementById(id);
-  itemDetails.innerHTML = "";
 };

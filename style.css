@@ -1,9 +1,9 @@
 header img {
-  width: 70%;
+  width: 80%;
 }
 #meal-area {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
 }
 .meal-item {
@@ -15,7 +15,7 @@ header img {
 .meal-item img {
   width: 100%;
   object-fit: contain;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 .meal-item img:hover {
   transform: scale(1.2);
