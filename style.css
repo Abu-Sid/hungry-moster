@@ -1,3 +1,7 @@
+body {
+  background-color: bisque !important;
+  font-family: "Oswald", sans-serif !important;
+}
 header img {
   width: 80%;
 }
@@ -10,9 +14,10 @@ header img {
   width: 100%;
   border: 1px solid;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px gray;
+  box-shadow: 5px 5px 7px gray;
   padding: 7px;
   text-align: center;
+  background-color: honeydew;
 }
 .meal-item img {
   width: 100%;
@@ -22,6 +27,7 @@ header img {
 .meal-item img:hover {
   transform: scale(1.2);
 }
+
 ul {
   margin-left: 25%;
 }

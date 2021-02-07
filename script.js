@@ -10,7 +10,7 @@ const getMealData = (inputMeal) => {
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal}`)
     .then((res) => res.json())
     .then((data) => displayMealItems(data.meals))
-    .catch((error) => alert("Please check your input"));
+    .catch((error) => alert("Sorry, this meal not found, try something else"));
 };
 //Display all render Meals to browser
 const displayMealItems = (meals) => {
@@ -29,9 +29,9 @@ const displayMealItems = (meals) => {
     mealDisplayArea.appendChild(mealDiv);
   });
 };
-// render only clicked recipe from api
-const recipeDetails = (id) => {
-  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+// render only clicked recipe from api using id
+const recipeDetails = (idMeal) => {
+  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
     .then((res) => res.json())
     .then((data) => displayIngredient(data.meals));
 };
@@ -50,6 +50,7 @@ const displayIngredient = (recipes) => {
     const Ingredient = document.createElement("h3");
     Ingredient.innerText = `Ingredients:`;
     const ulTag = document.createElement("ul");
+    //listing all ingredient here
     const ingredientInfo = `
          <li>${recipe.strIngredient1}</li>
          <li>${recipe.strIngredient2}</li>
@@ -58,6 +59,9 @@ const displayIngredient = (recipes) => {
          <li>${recipe.strIngredient5}</li>
          <li>${recipe.strIngredient6}</li>
          <li>${recipe.strIngredient7}</li>
+         <li>${recipe.strIngredient8}</li>
+         <li>${recipe.strIngredient9}</li>
+         <li>${recipe.strIngredient10}</li>
     `;
     ulTag.innerHTML = ingredientInfo;
     recipeDetails.appendChild(recipeDiv);
