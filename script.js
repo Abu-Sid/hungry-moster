@@ -15,6 +15,8 @@ const getMealData = (inputMeal) => {
 //Display all render Meals to browser
 const displayMealItems = (meals) => {
   const mealDisplayArea = document.getElementById("meal-area");
+  const itemDetails = document.getElementById("meal-area");
+  itemDetails.innerHTML = "";//refresh meals every search
   meals.map((meal) => {
     console.log(meal);
     const mealDiv = document.createElement("div");
@@ -23,7 +25,7 @@ const displayMealItems = (meals) => {
     <img src ="${meal.strMealThumb}">
     <h3>${meal.strMeal}</h3>`;
     mealDiv.innerHTML = mealInfo;
-    mealDiv.addEventListener("click", () => recipeDetails(meal.idMeal)); // display clicked meal ingredients
+    mealDiv.addEventListener("click", () => recipeDetails(meal.idMeal)); //function to display selected meal ingredients as modal
     mealDisplayArea.appendChild(mealDiv);
   });
 };
