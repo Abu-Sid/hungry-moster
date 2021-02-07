@@ -12,11 +12,11 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body class="bg-light">
     <!-- header star here -->
-    <header class="container">
+    <header class="bg-info">
       <!-- navbar start here -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light px-5">
         <div class="container-fluid">
           <a class="navbar-brand ms-5" href="#home"
             ><img src="./image/hyngry-master-logo.png" alt=""
@@ -37,9 +37,9 @@
               <a class="nav-link active" aria-current="page" href="#home"
                 >Home</a
               >
-              <a class="nav-link" href="#">Catagories</a>
-              <a class="nav-link" href="#">Recipes</a>
-              <a class="nav-link" href="#">Blog</a>
+              <a class="nav-link active" href="#">Catagories</a>
+              <a class="nav-link active" href="#">Recipes</a>
+              <a class="nav-link active" href="#">Blog</a>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
       <!-- Search bar for input value -->
       <form class="d-flex justify-content-center mt-5">
         <input
-          id="input-meal"
+          id="meal-name"
           class="form-control me-2 w-50"
           type="search"
           placeholder="Search"
@@ -68,6 +68,7 @@
     </section>
 
     <section class="container mt-5">
+      <!-- Renter Meal display div -->
       <div
         id="meal-area"
         data-bs-toggle="modal"
@@ -94,13 +95,15 @@
               ></button>
             </div>
             <div class="modal-body">
+              <!-- Ingredient Div -->
               <div id="recipe-ingredient"></div>
             </div>
           </div>
         </div>
       </div>
+      <!-- Modal end -->
     </section>
-
+    <!-- javascript link -->
     <script src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

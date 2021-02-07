@@ -1,6 +1,6 @@
 //Search button click display meal
 function DisplayMealData() {
-  const mealName = document.getElementById("input-meal").value;
+  const mealName = document.getElementById("meal-name").value;
   if (mealName === "") {
     alert("Please write your favorite dish name"); //error massage for empty input value
   } else getMealData(mealName);
@@ -10,13 +10,13 @@ const getMealData = (inputMeal) => {
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal}`)
     .then((res) => res.json())
     .then((data) => displayMealItems(data.meals))
-    .catch((error) => alert("Please check your URL"));
+    .catch((error) => alert("Please check your input"));
 };
 //Display all render Meals to browser
 const displayMealItems = (meals) => {
   const mealDisplayArea = document.getElementById("meal-area");
   const itemDetails = document.getElementById("meal-area");
-  itemDetails.innerHTML = "";//refresh meals every search
+  itemDetails.innerHTML = ""; //refresh meals every search
   meals.map((meal) => {
     console.log(meal);
     const mealDiv = document.createElement("div");
@@ -46,7 +46,7 @@ const displayIngredient = (recipes) => {
     recipeDiv.className = "recipe-item";
     const recipeName = document.createElement("h1");
     recipeName.className = "recipe-name";
-    recipeName.innerText = recipe.strMeal;
+    recipeName.innerText = `Recipe: ${recipe.strMeal}`;
     const Ingredient = document.createElement("h3");
     Ingredient.innerText = `Ingredients:`;
     const ulTag = document.createElement("ul");

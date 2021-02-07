@@ -9,7 +9,9 @@ header img {
 .meal-item {
   width: 100%;
   border: 1px solid;
-  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px gray;
+  padding: 7px;
   text-align: center;
 }
 .meal-item img {
@@ -20,13 +22,6 @@ header img {
 .meal-item img:hover {
   transform: scale(1.2);
 }
-.toggle-content {
-  display: none;
-}
-
-.toggle-content.is-visible {
-  display: block;
-}
-.error-msg {
-  text-align: center;
+ul {
+  margin-left: 25%;
 }
