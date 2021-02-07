@@ -1,8 +1,14 @@
 function showMealData() {
   const mealName = document.getElementById("input-meal").value;
-  if (mealName == "") {
-    document.getElementsById("error").innerHTML = `
-    <h2>Please Enter A Name</h2>`;
+  if (mealName === "") {
+    alert("Please search your favorite dish");
+
+    // const errorSection = document.getElementById("error");
+    // const errorDiv = document.createElement("div");
+    // errorDiv.className = "error-mgs";
+    // errorDiv.innerHTML = `
+    // <h1>Please enter valid input</h1>`;
+    // return errorSection.appendChild(errorDiv);
   } else getMealData(mealName);
 }
 
@@ -10,7 +16,7 @@ const getMealData = (inputMeal) => {
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal}`)
     .then((res) => res.json())
     .then((data) => displayMealItems(data.meals))
-    .catch((error) => alert("error"));
+    .catch((error) => alert("Please check your URL"));
 };
 
 const displayMealItems = (meals) => {
